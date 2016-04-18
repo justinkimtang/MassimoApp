@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Massimo</string>
     <string name="action_settings">Settings</string>
+    <string name="food">Look for a Meal</string>
+    <string name="home">Find your feast with Massimo</string>
+    <string name="restaurant">Look for a Restaurant</string>
 </resources>
