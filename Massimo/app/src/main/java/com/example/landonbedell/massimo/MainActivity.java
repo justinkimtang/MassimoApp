@@ -1,5 +1,6 @@
 package com.example.landonbedell.massimo;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -100,7 +101,8 @@ public class MainActivity extends AppCompatActivity {
      * Called when the user clicks the camera button from main screen
      **/
     public void openQRScanner(View view) {
-        setContentView(R.layout.activity_qr_scanner);
+        Intent i = new Intent(getBaseContext(), OrderView.class);
+        startActivity(i);
     }
 
     @Override
