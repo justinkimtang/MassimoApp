@@ -6,17 +6,17 @@ package com.example.landonbedell.massimo;
 public class FoodModel
 {
     private String foodName;
-    private int foodPrice;
+    private double foodPrice;
 
     public FoodModel(){}
 
-    public FoodModel(String foodName, int foodPrice)
+    public FoodModel(String foodName, double foodPrice)
     {
         this.foodName = foodName;
         this.foodPrice = foodPrice;
     }
 
-    public int getFoodPrice()
+    public double getFoodPrice()
     {
         return foodPrice;
     }
@@ -31,7 +31,7 @@ public class FoodModel
         this.foodName = foodName;
     }
 
-    public void setFoodPrice(int foodPrice)
+    public void setFoodPrice(double foodPrice)
     {
         this.foodPrice = foodPrice;
     }
