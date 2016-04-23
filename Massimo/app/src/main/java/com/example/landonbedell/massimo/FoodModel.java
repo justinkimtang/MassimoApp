@@ -35,4 +35,8 @@ public class FoodModel
     {
         this.foodPrice = foodPrice;
     }
+
+    public String printString(){
+        return this.foodName + "\t" + this.foodPrice;
+    }
 }

@@ -4,9 +4,9 @@ package com.example.landonbedell.massimo;
  * Created by branden on 23/04/16.
  */
 import android.app.Application;
-import java.util.ArrayList;
 
-public class OrderContoller extends Application{
+
+public class OrderController extends Application{
     private OrderModel order = new OrderModel();
     //private OrderView view = new OrderView();
 
@@ -29,7 +29,6 @@ public class OrderContoller extends Application{
     public void clearOrder(){
         order.clearOrder();
     }
-
     public void updateView(){
 
     }
