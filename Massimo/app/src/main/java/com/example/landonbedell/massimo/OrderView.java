@@ -24,6 +24,6 @@ public class OrderView extends Activity {
         orderController.setFood(tacos);
 
         ListView foodList = (ListView)findViewById(R.id.foodViewList);
- 
+
     }
 }
