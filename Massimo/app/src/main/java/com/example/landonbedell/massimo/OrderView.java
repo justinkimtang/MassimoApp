@@ -1,8 +1,11 @@
 package com.example.landonbedell.massimo;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -60,7 +63,7 @@ public class OrderView extends AppCompatActivity {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                FoodModel drink = new FoodModel("Drink", 2.75);
+                FoodModel drink = new FoodModel("Beer", 2.75);
                 orderController.setFood(drink);
                 updateFoodNamesList(orderController);
                 arrayAdapter.notifyDataSetChanged();
@@ -83,6 +86,30 @@ public class OrderView extends AppCompatActivity {
         arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,foodNames);
         foodList.setAdapter(arrayAdapter);
 
+    }
+
+    public void checkout(View view){
+        Context context = this;
+        if (selectedItems.isEmpty()){
+            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch (which){
+                        case DialogInterface.BUTTON_POSITIVE:
+                            System.out.println("tight");
+                            break;
+
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            System.out.println("cool");
+                            break;
+                    }
+                }
+            };
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setMessage("You selected no items, would you like to pay for them all?").setPositiveButton("Yes", dialogClickListener)
+                    .setNegativeButton("No", dialogClickListener).show();
+
+        }
     }
 
 }
