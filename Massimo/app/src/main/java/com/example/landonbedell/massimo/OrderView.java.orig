@@ -36,10 +36,18 @@ public class OrderView extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+<<<<<<< HEAD
+        final OrderController orderController = new OrderController();
+
+        FoodModel burger = new FoodModel("Burger", 8.75, 1);
+        FoodModel fries = new FoodModel("Fries", 3.25, 1);
+        FoodModel tacos = new FoodModel("Tacos", 8.75, 1);
+=======
         foodList = (ListView)findViewById(R.id.foodViewList);
         FoodModel burger = new FoodModel("Burger", 8.75);
         FoodModel fries = new FoodModel("Fries", 3.25);
         FoodModel tacos = new FoodModel("Tacos", 8.75);
+>>>>>>> 25210cb0c8b4dca435a4342f8479a45b6c4edbd0
         orderController.setFood(burger);
         orderController.setFood(fries);
         orderController.setFood(tacos);

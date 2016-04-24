@@ -17,11 +17,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name="com.example.landonbedell.massimo.RateActivity" ></activity>
+        <activity android:name="com.example.landonbedell.massimo.OrderView" ></activity>
+=======
         <activity android:name="com.example.landonbedell.massimo.OrderView"
                     android:label ="Order"></activity>
         <activity android:name="com.example.landonbedell.massimo.PayView"
             android:label ="Pay"></activity>
+>>>>>>> 25210cb0c8b4dca435a4342f8479a45b6c4edbd0
         <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES" android:value="barcode"/>
         <uses-permission android:name="android.permission.CAMERA" /><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->

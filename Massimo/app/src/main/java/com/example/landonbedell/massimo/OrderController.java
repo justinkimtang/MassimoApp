@@ -29,9 +29,16 @@ public class OrderController extends Application{
     public void clearOrder(){
         order.clearOrder();
     }
-    public void updateView(){
 
-    }
+    public boolean has(int item) { return order.has(item);  }
+
+    public void addSelected(int item) { order.addSelected(item);    }
+
+    public void removeSelected(int item) { order.removeSelected(item);}
+
+    public boolean isEmpty() {return order.isEmpty();}
+
+    public void selectAll() {   order.selectAll(); }
 
 }
 
