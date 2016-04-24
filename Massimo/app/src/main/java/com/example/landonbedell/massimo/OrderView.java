@@ -2,6 +2,7 @@ package com.example.landonbedell.massimo;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -19,12 +20,14 @@ import java.util.ArrayList;
 /**
  * Created by branden on 23/04/16.
  */
+
 public class OrderView extends AppCompatActivity {
     private ArrayList<String> foodNames = new ArrayList<String>();
-    private ArrayList<Integer> selectedItems = new ArrayList<Integer>();
     private SwipeRefreshLayout swipeContainer;
     private ListView foodList;
     ArrayAdapter<String> arrayAdapter;
+    final OrderController orderController = new OrderController();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,6 @@ public class OrderView extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final OrderController orderController = new OrderController();
         foodList = (ListView)findViewById(R.id.foodViewList);
         FoodModel burger = new FoodModel("Burger", 8.75);
         FoodModel fries = new FoodModel("Fries", 3.25);
@@ -47,14 +49,13 @@ public class OrderView extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 System.out.println(foodList.isItemChecked(position));
-                if (selectedItems.contains(position)) {
-                    int index = selectedItems.indexOf(position);
-                    selectedItems.remove(index);
+                if (orderController.has(position)) {
+                    orderController.removeSelected(position);
                     view.setBackgroundColor(Color.WHITE);
                 }
                 else {
+                    orderController.addSelected(position);
                     view.setBackgroundColor(Color.rgb(204,255,102));
-                    selectedItems.add(position);
                 }
             }
         });
@@ -90,17 +91,17 @@ public class OrderView extends AppCompatActivity {
 
     public void checkout(View view){
         Context context = this;
-        if (selectedItems.isEmpty()){
+        if (orderController.isEmpty()){
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     switch (which){
                         case DialogInterface.BUTTON_POSITIVE:
-                            System.out.println("tight");
+                            orderController.selectAll();
+                            pay();
                             break;
 
                         case DialogInterface.BUTTON_NEGATIVE:
-                            System.out.println("cool");
                             break;
                     }
                 }
@@ -110,6 +111,13 @@ public class OrderView extends AppCompatActivity {
                     .setNegativeButton("No", dialogClickListener).show();
 
         }
+        else
+            pay();
+    }
+
+    public void pay(){
+        Intent i = new Intent(getBaseContext(), PayView.class);
+        startActivity(i);
     }
 
 }
