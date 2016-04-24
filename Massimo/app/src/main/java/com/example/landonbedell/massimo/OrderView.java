@@ -19,9 +19,9 @@ public class OrderView extends Activity {
 
         final OrderController orderController = new OrderController();
 
-        FoodModel burger = new FoodModel("Burger", 8.75);
-        FoodModel fries = new FoodModel("Fries", 3.25);
-        FoodModel tacos = new FoodModel("Tacos", 8.75);
+        FoodModel burger = new FoodModel("Burger", 8.75, 1);
+        FoodModel fries = new FoodModel("Fries", 3.25, 1);
+        FoodModel tacos = new FoodModel("Tacos", 8.75, 1);
         orderController.setFood(burger);
         orderController.setFood(fries);
         orderController.setFood(tacos);

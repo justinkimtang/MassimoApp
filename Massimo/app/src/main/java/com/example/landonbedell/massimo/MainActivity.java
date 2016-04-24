@@ -104,6 +104,10 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(getBaseContext(), OrderView.class);
         startActivity(i);
     }
+    public void rateActivity(View view) {
+        Intent i = new Intent(getBaseContext(), RateActivity.class);
+        startActivity(i);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

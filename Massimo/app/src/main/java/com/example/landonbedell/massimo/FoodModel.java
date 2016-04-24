@@ -5,6 +5,7 @@ package com.example.landonbedell.massimo;
  */
 public class FoodModel
 {
+    private float ratingStar;
     private String foodName;
     private double foodPrice;
 
@@ -12,6 +13,13 @@ public class FoodModel
 
     public FoodModel(String foodName, double foodPrice)
     {
+        this.foodName = foodName;
+        this.foodPrice = foodPrice;
+    }
+
+    public FoodModel(String foodName, double foodPrice, int ratingStar)
+    {
+        this.ratingStar = ratingStar;
         this.foodName = foodName;
         this.foodPrice = foodPrice;
     }
@@ -24,6 +32,14 @@ public class FoodModel
     public String getFoodName()
     {
         return foodName;
+    }
+
+    public float getRatingStar() {
+        return ratingStar;
+    }
+
+    public void setRatingStar(float ratingStar) {
+        this.ratingStar = ratingStar;
     }
 
     public void setFoodName(String foodName)
