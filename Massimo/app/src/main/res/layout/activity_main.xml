@@ -48,9 +48,9 @@
         android:id="@+id/rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|end"
+        android:layout_gravity="bottom|start"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_menu_camera"
+        android:src="@drawable/abc_ratingbar_full_material"
         android:onClick="rateActivity"/>
 
 </android.support.design.widget.CoordinatorLayout>

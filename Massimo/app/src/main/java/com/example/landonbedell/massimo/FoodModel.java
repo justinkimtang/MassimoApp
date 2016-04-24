@@ -5,25 +5,36 @@ package com.example.landonbedell.massimo;
  */
 public class FoodModel
 {
+    static int idCount = 0;
+    private int item_id;
     private float ratingStar;
     private String foodName;
     private double foodPrice;
+
 
     public FoodModel(){}
 
     public FoodModel(String foodName, double foodPrice)
     {
+        this.item_id = nextId();
         this.foodName = foodName;
         this.foodPrice = foodPrice;
     }
 
     public FoodModel(String foodName, double foodPrice, int ratingStar)
     {
+        this.item_id = nextId();
         this.ratingStar = ratingStar;
         this.foodName = foodName;
         this.foodPrice = foodPrice;
     }
 
+    public int nextId(){
+        idCount = idCount +1;
+        return idCount;
+    }
+
+    public int getItem_id(){ return item_id;}
     public double getFoodPrice()
     {
         return foodPrice;

@@ -48,7 +48,14 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        if(CustomerModel.getCurrentCustomer() == null)
+        {
+            CustomerModel customer = new CustomerModel("Landon");
+            CustomerModel.setCurrentCustomer(customer);
+            customer.addPendingRatings(new FoodModel("Burger", 3.00, 0));
+            customer.addPendingRatings(new FoodModel("Pizza", 4.20, 0));
+            customer.addPendingRatings(new FoodModel("Sushi", 9.50, 0));
+        }
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 

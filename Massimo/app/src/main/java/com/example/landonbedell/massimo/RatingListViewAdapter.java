@@ -68,7 +68,6 @@ public class RatingListViewAdapter extends ArrayAdapter<FoodModel> {
     private static class ViewHolder {
         private RatingBar ratingBar;
         private TextView foodName;
-
         public ViewHolder(View view) {
             ratingBar = (RatingBar) view.findViewById(R.id.rate_img);
             foodName = (TextView) view.findViewById(R.id.text);
