@@ -40,6 +40,8 @@ public class OrderController extends Application{
 
     public void selectAll() {   order.selectAll(); }
 
+    public double getTotal() { return order.sumPrice(); }
+
 }
 
 

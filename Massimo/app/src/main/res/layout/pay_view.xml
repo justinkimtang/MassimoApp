@@ -22,4 +22,49 @@
             />
     </android.support.design.widget.AppBarLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:gravity="center"
+        android:id="@+id/total"
+        android:textSize="64sp"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="   Tip?"
+        android:id="@+id/tipView"
+        android:layout_gravity="center_horizontal" />
+
+    <ListView
+        android:id="@+id/tipViewList"
+        android:layout_width="fill_parent"
+        android:layout_height="285dp"
+        android:dividerHeight="0.1dp"
+        android:divider="#FFFFFF"
+        android:layout_weight="0.96"
+        >
+    </ListView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=" *with tip"
+        android:id="@+id/disclaimerView"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Pay"
+        android:id="@+id/button"
+        android:onClick="pay"/>
+
+
 </LinearLayout>
