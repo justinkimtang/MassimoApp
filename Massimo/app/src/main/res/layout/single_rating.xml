@@ -9,7 +9,7 @@ android:orientation="horizontal">
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_weight="0.5"
+    android:layout_weight="0.4"
     android:textSize="20dp"
     android:gravity="center" />
 
@@ -22,8 +22,17 @@ android:orientation="horizontal">
     android:maxWidth="20dp"
     android:minWidth="20dp"
     android:numStars="5"
-    android:stepSize="1" />
+    android:stepSize="1"
+    android:background="@android:color/background_light" />
 
-
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:id="@+id/submitOneRating"
+        android:src="@android:drawable/ic_media_play"
+        android:clickable="true"
+        android:tint="@color/pressed_color"
+        android:background="#ffffff"/>
 
 </LinearLayout>
