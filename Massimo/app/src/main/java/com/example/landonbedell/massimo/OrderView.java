@@ -26,7 +26,7 @@ public class OrderView extends AppCompatActivity {
     private SwipeRefreshLayout swipeContainer;
     private ListView foodList;
     ArrayAdapter<String> arrayAdapter;
-    final OrderController orderController = new OrderController();
+    OrderController orderController;
 
 
     @Override
@@ -35,6 +35,7 @@ public class OrderView extends AppCompatActivity {
         setContentView(R.layout.order_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        orderController = (OrderController) getApplicationContext();
 
         foodList = (ListView)findViewById(R.id.foodViewList);
         FoodModel burger = new FoodModel("Burger", 8.75);
@@ -48,7 +49,6 @@ public class OrderView extends AppCompatActivity {
         foodList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                System.out.println(foodList.isItemChecked(position));
                 if (orderController.has(position)) {
                     orderController.removeSelected(position);
                     view.setBackgroundColor(Color.WHITE);

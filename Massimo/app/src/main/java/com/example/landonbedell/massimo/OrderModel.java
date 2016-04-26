@@ -51,6 +51,19 @@ public class OrderModel {
         }
     }
 
+    public double sumPrice(){
+        double total = 0;
+        int index;
+        FoodModel food;
+        for (int i = 0; i < selected.size(); i++){
+            index = selected.get(i);
+            food = order.get(index);
+            System.out.println(food.getFoodPrice());
+            total += food.getFoodPrice();
+        }
+        return total;
+    }
+
     public void clearOrder(){
         order.clear();
     }
