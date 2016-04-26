@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private GoogleApiClient client;
-
+    private ArrayList<FoodModel> tempMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,9 +52,12 @@ public class MainActivity extends AppCompatActivity {
         {
             CustomerModel customer = new CustomerModel("Landon");
             CustomerModel.setCurrentCustomer(customer);
-            customer.addPendingRatings(new FoodModel("Burger", 3.00, 0));
-            customer.addPendingRatings(new FoodModel("Pizza", 4.20, 0));
-            customer.addPendingRatings(new FoodModel("Sushi", 9.50, 0));
+            buildTempMenu();
+            for(FoodModel item: tempMenu)
+            {
+                customer.addPendingRatings(item);
+            }
+
         }
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -176,5 +179,13 @@ public class MainActivity extends AppCompatActivity {
         );
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
+    }
+
+    private void buildTempMenu()
+    {
+        tempMenu = new ArrayList<>();
+        tempMenu.add(new FoodModel("Burger", 3.00, 0));
+        tempMenu.add(new FoodModel("Pizza", 4.20, 0));
+        tempMenu.add(new FoodModel("Sushi", 9.50, 0));
     }
 }

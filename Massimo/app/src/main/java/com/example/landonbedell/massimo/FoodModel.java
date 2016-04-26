@@ -3,7 +3,7 @@ package com.example.landonbedell.massimo;
 /**
  * Created by branden on 23/04/16.
  */
-public class FoodModel
+public class FoodModel implements Ratable
 {
     static int idCount = 0;
     private int item_id;
@@ -41,6 +41,10 @@ public class FoodModel
     }
 
     public String getFoodName()
+    {
+        return foodName;
+    }
+    public String getName()
     {
         return foodName;
     }

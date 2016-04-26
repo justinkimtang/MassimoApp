@@ -14,20 +14,20 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class RatingListViewAdapter extends ArrayAdapter<FoodModel> {
+public class RatingListViewAdapter extends ArrayAdapter<Rating> {
 
     private AppCompatActivity activity;
-    private List<FoodModel> foodList;
+    private List<Rating> itemList;
 
-    public RatingListViewAdapter(AppCompatActivity context, int resource, List<FoodModel> objects) {
+    public RatingListViewAdapter(AppCompatActivity context, int resource, List<Rating> objects) {
         super(context, resource, objects);
         this.activity = context;
-        this.foodList = objects;
+        this.itemList = objects;
     }
 
     @Override
-    public FoodModel getItem(int position) {
-        return foodList.get(position);
+    public Rating getItem(int position) {
+        return itemList.get(position);
     }
 
     @Override
@@ -48,8 +48,8 @@ public class RatingListViewAdapter extends ArrayAdapter<FoodModel> {
         holder.ratingBar.setOnRatingBarChangeListener(onRatingChangedListener(holder, position));
 
         holder.ratingBar.setTag(position);
-        holder.ratingBar.setRating(getItem(position).getRatingStar());
-        holder.foodName.setText(getItem(position).getFoodName());
+        holder.ratingBar.setRating(getItem(position).ratingNum);
+        holder.itemName.setText(getItem(position).item.getName());
 
         return convertView;
     }
@@ -58,8 +58,8 @@ public class RatingListViewAdapter extends ArrayAdapter<FoodModel> {
         return new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-                FoodModel item = getItem(position);
-                item.setRatingStar(v);
+                Rating item = getItem(position);
+                item.ratingNum = v;
                 Log.i("Adapter", "star: " + v);
             }
         };
@@ -67,10 +67,10 @@ public class RatingListViewAdapter extends ArrayAdapter<FoodModel> {
 
     private static class ViewHolder {
         private RatingBar ratingBar;
-        private TextView foodName;
+        private TextView itemName;
         public ViewHolder(View view) {
             ratingBar = (RatingBar) view.findViewById(R.id.rate_img);
-            foodName = (TextView) view.findViewById(R.id.text);
+            itemName = (TextView) view.findViewById(R.id.text);
         }
     }
 }

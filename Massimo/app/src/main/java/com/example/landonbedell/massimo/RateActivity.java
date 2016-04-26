@@ -21,8 +21,8 @@ import java.util.ArrayList;
 public class RateActivity extends AppCompatActivity {
 
     private ListView listView;
-    private ArrayAdapter<FoodModel> adapter;
-    private ArrayList<FoodModel> arrayList;
+    private ArrayAdapter<Rating> adapter;
+    private ArrayList<Rating> arrayList;
     CustomerModel customer = CustomerModel.getCurrentCustomer();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +49,9 @@ public class RateActivity extends AppCompatActivity {
                 TextView name = (TextView) dialog.findViewById(R.id.food_name);
                 TextView starRate = (TextView) dialog.findViewById(R.id.rate);
 
-                FoodModel food = (FoodModel) parent.getAdapter().getItem(position);
-                name.setText("Food name: " + food.getFoodName());
-                starRate.setText("Your rate: " + food.getRatingStar());
+                Rating rating = (Rating) parent.getAdapter().getItem(position);
+                name.setText("Food name: " + rating.item.getName());
+                starRate.setText("Your rate: " + rating.ratingNum);
 
                 dialog.show();
             }
