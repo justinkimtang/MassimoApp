@@ -3,7 +3,8 @@
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:descendantFocusability="blocksDescendants"
-android:orientation="horizontal">
+android:orientation="horizontal"
+    android:background="@android:color/background_light">
 <TextView
     android:id="@+id/text"
     android:layout_width="0dp"
@@ -11,7 +12,8 @@ android:orientation="horizontal">
     android:layout_gravity="center"
     android:layout_weight="0.4"
     android:textSize="20dp"
-    android:gravity="center" />
+    android:gravity="center"
+    android:background="@android:color/background_light"/>
 
 <RatingBar
     android:id="@+id/rate_img"
@@ -33,6 +35,6 @@ android:orientation="horizontal">
         android:src="@android:drawable/ic_media_play"
         android:clickable="true"
         android:tint="@color/pressed_color"
-        android:background="#ffffff"/>
+        android:background="@android:color/background_light"/>
 
 </LinearLayout>

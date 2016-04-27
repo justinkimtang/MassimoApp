@@ -22,6 +22,7 @@ public class PayView extends AppCompatActivity {
     private ListView tipList;
     TextView totalDisplay;
     OrderController orderController;
+    int uID = 0;
 
 
 
@@ -35,7 +36,7 @@ public class PayView extends AppCompatActivity {
 
         orderController = (OrderController)getApplicationContext();
         totalDisplay = (TextView)findViewById(R.id.total);
-        total = orderController.getTotal();
+        total = orderController.getTotal(uID);
         displayTotal(0.0);
         tipList = (ListView)findViewById(R.id.tipViewList);
         createListView();
@@ -59,7 +60,7 @@ public class PayView extends AppCompatActivity {
         int pos;
         for (int i = 0; i < positions.size(); i++){
             pos = positions.get(i);
-            tipList.getChildAt(pos).setBackgroundColor(Color.WHITE);
+            tipList.getChildAt(pos).setBackgroundColor(0x125688);
         }
         if (position == 0) displayTotal(0.15);
         else if (position == 1) displayTotal(0.18);
@@ -80,8 +81,11 @@ public class PayView extends AppCompatActivity {
     public void pay(View view){
         CustomerModel cust = CustomerModel.getCurrentCustomer();
         System.out.println(orderController.getOrderSize());
-        for(int i = 0; i < orderController.getOrderSize(); i++){
-            cust.addPendingRatings(orderController.getFood(i));
+        ArrayList<Integer> mySelected = orderController.getMySelected(uID);
+        int index;
+        for(int i = 0; i < mySelected.size(); i++){
+                index = mySelected.get(i);
+                cust.addPendingRatings(orderController.getFood(index));
         }
         Intent i = new Intent(getBaseContext(), RateActivity.class);
         startActivity(i);
