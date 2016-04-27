@@ -40,17 +40,9 @@ public class HomeFragment extends Fragment {
 
 
     private ArrayList<Ratable> getRatableList(){
-        ArrayList<Ratable> ratables = new ArrayList<>();
+        CustomerModel cust = CustomerModel.getCurrentCustomer();
 
-        ratables.add(new FoodModel("Hamburger",3.00));
-        ratables.add(new FoodModel("Pizza",4.00));
-        ratables.add(new FoodModel("Sushi",6.75));
-        ratables.add(new FoodModel("Burrito",4.00));
-        ratables.add(new FoodModel("Cheese burger",5.00));
-        ratables.add(new FoodModel("Spam",1.00));
-        ratables.add(new FoodModel("Mac & Cheese",3.25));
-
-        return ratables;
+        return cust.getRecommendations();
     }
 
 }

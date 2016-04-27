@@ -6,7 +6,8 @@ public class CustomerModel {
     private static CustomerModel currentCustomer = null;
     private ArrayList<Rating> pendingRatings;
     private ArrayList<Rating> customerRatings;
-    private ArrayList<Ratable> recommendations;
+
+    private ArrayList<Ratable> recommendations = new ArrayList<>();
     private String name;
 
     public CustomerModel(String name){
@@ -22,7 +23,10 @@ public class CustomerModel {
     public static void setCurrentCustomer(CustomerModel customer){
         currentCustomer = customer;
     }
-
+    public ArrayList<Ratable> getRecommendations() {
+        requestRecommendations();
+        return recommendations;
+    }
     public static CustomerModel getCurrentCustomer(){
         return currentCustomer;
     }

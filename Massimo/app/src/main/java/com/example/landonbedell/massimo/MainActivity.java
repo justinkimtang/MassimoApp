@@ -46,8 +46,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        makeData();
-
+        ArrayList<Rating> r =  Rating.generateRatings();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if(CustomerModel.getCurrentCustomer() == null)
         {
@@ -176,26 +175,6 @@ public class MainActivity extends AppCompatActivity {
         client.disconnect();
     }
 
-    public void makeData()
-    {
-        FoodModel f1 = new FoodModel("Hamburger",3.00);
-        FoodModel f2 = new FoodModel("Pizza",4.00);
-        FoodModel f3 = new FoodModel("Sushi",6.75);
-        FoodModel f4 = new FoodModel("Burrito",4.00);
-        FoodModel f5 = new FoodModel("Cheese burger",5.00);
-        FoodModel f6 = new FoodModel("Spam",1.00);
-        FoodModel f7 = new FoodModel("Mac & Cheese",3.25);
 
-        Rating r1 = new Rating("Joe",f1,4);
-        Rating r2 = new Rating("Joe",f2,5);
-        Rating r3 = new Rating("Joe",f3,2);
-        Rating r4 = new Rating("Joe",f4,3);
-
-        Rating r5 = new Rating("Emma",f1,3);
-        Rating r6 = new Rating("Emma",f2,3);
-        Rating r7 = new Rating("Emma",f3,5);
-        Rating r8 = new Rating("Emma",f4,5);
-
-    }
 
 }

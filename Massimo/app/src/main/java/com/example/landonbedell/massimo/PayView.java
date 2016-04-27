@@ -85,7 +85,19 @@ public class PayView extends AppCompatActivity {
         int index;
         for(int i = 0; i < mySelected.size(); i++){
                 index = mySelected.get(i);
-                cust.addPendingRatings(orderController.getFood(index));
+                Ratable r = orderController.getFood(index);
+                cust.addPendingRatings(r);
+            if(i==0)
+            {
+                new Rating("Emma", r,2 );
+                new Rating("Joe", r,4 );
+            }else if(i == 1){
+                new Rating("Emma", r,5 );
+                new Rating("Joe", r,1 );
+            }else if(i <1) {
+                new Rating("Emma",r,5 );
+                new Rating("Joe", r,5);
+            }
         }
         Intent i = new Intent(getBaseContext(), RateActivity.class);
         startActivity(i);
