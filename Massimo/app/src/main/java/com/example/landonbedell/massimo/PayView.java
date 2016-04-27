@@ -1,5 +1,6 @@
 package com.example.landonbedell.massimo;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,8 @@ public class PayView extends AppCompatActivity {
     double total;
     private ListView tipList;
     TextView totalDisplay;
+    OrderController orderController;
+
 
 
 
@@ -30,7 +33,7 @@ public class PayView extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        OrderController orderController = (OrderController)getApplicationContext();
+        orderController = (OrderController)getApplicationContext();
         totalDisplay = (TextView)findViewById(R.id.total);
         total = orderController.getTotal();
         displayTotal(0.0);
@@ -72,5 +75,15 @@ public class PayView extends AppCompatActivity {
         arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,tipAmount);
         tipList.setAdapter(arrayAdapter);
 
+    }
+
+    public void pay(View view){
+        CustomerModel cust = CustomerModel.getCurrentCustomer();
+        System.out.println(orderController.getOrderSize());
+        for(int i = 0; i < orderController.getOrderSize(); i++){
+            cust.addPendingRatings(orderController.getFood(i));
+        }
+        Intent i = new Intent(getBaseContext(), RateActivity.class);
+        startActivity(i);
     }
 }
