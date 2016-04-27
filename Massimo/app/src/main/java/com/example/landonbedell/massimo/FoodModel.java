@@ -5,7 +5,7 @@ package com.example.landonbedell.massimo;
  */
 public class FoodModel implements Ratable
 {
-    static int idCount = 0;
+    private static int idCount = 0;
     private int item_id;
     private float ratingStar;
     private String foodName;
