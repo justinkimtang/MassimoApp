@@ -27,6 +27,7 @@ public class OrderView extends AppCompatActivity {
     private ListView foodList;
     ArrayAdapter<String> arrayAdapter;
     OrderController orderController;
+    TableModel table;
 
 
     @Override
@@ -35,15 +36,17 @@ public class OrderView extends AppCompatActivity {
         setContentView(R.layout.order_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        table = new TableModel();
         orderController = (OrderController) getApplicationContext();
-
+        table.addObserver(orderController);
         foodList = (ListView)findViewById(R.id.foodViewList);
         FoodModel burger = new FoodModel("Burger", 8.75);
         FoodModel fries = new FoodModel("Fries", 3.25);
         FoodModel tacos = new FoodModel("Tacos", 8.75);
-        orderController.setFood(burger);
-        orderController.setFood(fries);
-        orderController.setFood(tacos);
+        table.setFood(burger);
+        table.setFood(fries);
+        table.setFood(tacos);
+
         updateFoodNamesList(orderController);
         createListView();
         foodList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -65,7 +68,7 @@ public class OrderView extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 FoodModel drink = new FoodModel("Beer", 2.75);
-                orderController.setFood(drink);
+                table.setFood(drink);
                 updateFoodNamesList(orderController);
                 arrayAdapter.notifyDataSetChanged();
                 swipeContainer.setRefreshing(false);
