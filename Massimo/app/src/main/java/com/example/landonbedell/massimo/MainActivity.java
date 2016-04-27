@@ -52,12 +52,6 @@ public class MainActivity extends AppCompatActivity {
         {
             CustomerModel customer = new CustomerModel("Landon");
             CustomerModel.setCurrentCustomer(customer);
-            buildTempMenu();
-            for(FoodModel item: tempMenu)
-            {
-                customer.addPendingRatings(item);
-            }
-
         }
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -111,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
      * Called when the user clicks the camera button from main screen
      **/
     public void openQRScanner(View view) {
-        Intent i = new Intent(getBaseContext(), OrderView.class);
+        Intent i = new Intent(getBaseContext(), CameraView.class);
         startActivity(i);
     }
     public void rateActivity(View view) {
@@ -181,11 +175,5 @@ public class MainActivity extends AppCompatActivity {
         client.disconnect();
     }
 
-    private void buildTempMenu()
-    {
-        tempMenu = new ArrayList<>();
-        tempMenu.add(new FoodModel("Burger", 3.00, 0));
-        tempMenu.add(new FoodModel("Pizza", 4.20, 0));
-        tempMenu.add(new FoodModel("Sushi", 9.50, 0));
-    }
+
 }
