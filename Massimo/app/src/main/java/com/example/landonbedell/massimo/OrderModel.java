@@ -45,7 +45,7 @@ public class OrderModel {
     }
 
     public FoodModel getFood(int foodPos){
-        return order.get(foodPos);
+            return order.get(foodPos);
     }
 
     public void setFood(FoodModel food){
@@ -79,6 +79,16 @@ public class OrderModel {
             }
         }
         return total;
+    }
+
+    public ArrayList<Integer> getMySelected(int uID){
+        ArrayList<Integer> mySelected = new ArrayList<Integer>();
+        for (int i = 0; i < order.size(); i++){
+            if (selected.get(i) == uID){
+                mySelected.add(i);
+            }
+        }
+        return mySelected;
     }
 
     public void clearOrder(){

@@ -5,6 +5,7 @@ package com.example.landonbedell.massimo;
  */
 import android.app.Application;
 
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -22,13 +23,11 @@ public class OrderController extends Application implements Observer{
         return order.getFood(foodPos);
     }
 
-
-
     public int getOrderSize(){
         return order.getOrderSize();
     }
 
-
+    public ArrayList<Integer> getMySelected(int uId){ return order.getMySelected(uId); }
 
     public double getTotal(int uId) { return order.sumPrice(uId); }
 

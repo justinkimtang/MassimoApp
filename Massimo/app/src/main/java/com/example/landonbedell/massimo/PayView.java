@@ -81,8 +81,11 @@ public class PayView extends AppCompatActivity {
     public void pay(View view){
         CustomerModel cust = CustomerModel.getCurrentCustomer();
         System.out.println(orderController.getOrderSize());
-        for(int i = 0; i < orderController.getOrderSize(); i++){
-            cust.addPendingRatings(orderController.getFood(i));
+        ArrayList<Integer> mySelected = orderController.getMySelected(uID);
+        int index;
+        for(int i = 0; i < mySelected.size(); i++){
+                index = mySelected.get(i);
+                cust.addPendingRatings(orderController.getFood(index));
         }
         Intent i = new Intent(getBaseContext(), RateActivity.class);
         startActivity(i);
