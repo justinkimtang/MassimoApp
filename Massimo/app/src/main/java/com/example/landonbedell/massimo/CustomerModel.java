@@ -6,7 +6,7 @@ public class CustomerModel {
     private static CustomerModel currentCustomer = null;
     private ArrayList<Rating> pendingRatings;
     private ArrayList<Rating> customerRatings;
-    private ArrayList<FoodModel> recommendations;
+    private ArrayList<Ratable> recommendations;
     private String name;
 
     public CustomerModel(String name){
@@ -30,7 +30,10 @@ public class CustomerModel {
     public void requestRecommendations(ArrayList<Rating> customerRatings)
     {
         Recommender recommender = new BasicRecommender();
-
+        for(Rating item: customerRatings)
+        {
+            recommendations = item.accept(recommender,recommendations);
+        }
 
     }
 
