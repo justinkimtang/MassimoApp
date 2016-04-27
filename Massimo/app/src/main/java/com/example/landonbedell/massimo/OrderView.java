@@ -51,7 +51,7 @@ public class OrderView extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 if (orderController.has(position)) {
                     orderController.removeSelected(position);
-                    view.setBackgroundColor(Color.WHITE);
+                    view.setBackgroundColor(0x125688);
                 }
                 else {
                     orderController.addSelected(position);

@@ -59,7 +59,7 @@ public class PayView extends AppCompatActivity {
         int pos;
         for (int i = 0; i < positions.size(); i++){
             pos = positions.get(i);
-            tipList.getChildAt(pos).setBackgroundColor(Color.WHITE);
+            tipList.getChildAt(pos).setBackgroundColor(0x125688);
         }
         if (position == 0) displayTotal(0.15);
         else if (position == 1) displayTotal(0.18);
