@@ -11,20 +11,37 @@ public class OrderModel {
     private ArrayList<Integer> selected = new ArrayList<Integer>();
 
     public void removeSelected(int itemNum){
-        int index = selected.indexOf(itemNum);
-        selected.remove(index);
+        selected.set(itemNum, -1);
     }
 
-    public void addSelected(int itemNum){
-        selected.add(itemNum);
+    public boolean isTakeable(int pos){
+        if (selected.get(pos) == -1){
+            return true;
+        }
+        else return false;
+    }
+
+    public void addSelectable() {selected.add(-1);}
+
+    public void addSelected(int itemNum, int uID){
+        selected.set(itemNum, uID);
     }
 
     public boolean isEmpty(){
-        return selected.isEmpty();
+        boolean empty = true;
+        for (int i = 0; i < order.size(); i++){
+            if (selected.get(i) != -1){
+                empty = false;
+                break;
+            }
+        }
+        return empty;
     }
 
-    public boolean has(int item){
-        return  selected.contains(item);
+    public boolean has(int item, int uID){
+        if (selected.get(item) == uID)
+            return true;
+        else return false;
     }
 
     public FoodModel getFood(int foodPos){
@@ -43,23 +60,23 @@ public class OrderModel {
         order.remove(foodPos);
     }
 
-    public void selectAll(){
+    public void selectAll(int uId){
         int sizeSelected = getOrderSize();
         for (int i = 0; i < sizeSelected; i++)
         {
-            selected.add(i);
+            selected.set(i,uId);
         }
     }
 
-    public double sumPrice(){
+    public double sumPrice(int uId){
         double total = 0;
         int index;
         FoodModel food;
         for (int i = 0; i < selected.size(); i++){
-            index = selected.get(i);
-            food = order.get(index);
-            System.out.println(food.getFoodPrice());
-            total += food.getFoodPrice();
+            if (selected.get(i) == uId) {;
+                food = order.get(i);
+                total += food.getFoodPrice();
+            }
         }
         return total;
     }

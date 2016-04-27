@@ -22,6 +22,7 @@ public class PayView extends AppCompatActivity {
     private ListView tipList;
     TextView totalDisplay;
     OrderController orderController;
+    int uID = 0;
 
 
 
@@ -35,7 +36,7 @@ public class PayView extends AppCompatActivity {
 
         orderController = (OrderController)getApplicationContext();
         totalDisplay = (TextView)findViewById(R.id.total);
-        total = orderController.getTotal();
+        total = orderController.getTotal(uID);
         displayTotal(0.0);
         tipList = (ListView)findViewById(R.id.tipViewList);
         createListView();

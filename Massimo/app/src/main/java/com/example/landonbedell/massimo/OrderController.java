@@ -11,7 +11,7 @@ import java.util.Observer;
 
 public class OrderController extends Application implements Observer{
     private OrderModel order;
-    //private OrderView view = new OrderView();
+    private OrderView view = new OrderView();
 
     @Override
     public void update(Observable observable, Object order){
@@ -22,21 +22,15 @@ public class OrderController extends Application implements Observer{
         return order.getFood(foodPos);
     }
 
-    public boolean has(int item) { return order.has(item);  }
 
-    public void removeSelected(int item) { order.removeSelected(item);}
 
     public int getOrderSize(){
         return order.getOrderSize();
     }
 
-    public void addSelected(int item) { order.addSelected(item);    }
 
-    public boolean isEmpty() {return order.isEmpty();}
 
-    public void selectAll() {   order.selectAll(); }
-
-    public double getTotal() { return order.sumPrice(); }
+    public double getTotal(int uId) { return order.sumPrice(uId); }
 
 }
 

@@ -10,6 +10,7 @@ public class TableModel extends Observable {
 
     public void setFood(FoodModel food){
         order.setFood(food);
+        order.addSelectable();
         setChanged();
         notifyObservers(order);
     }
@@ -25,5 +26,21 @@ public class TableModel extends Observable {
         setChanged();
         notifyObservers(order);
     }
+
+    public void addSelected(int item, int uID) { order.addSelected(item, uID);    }
+
+    public boolean has(int item, int uID) {
+        return order.has(item, uID);
+    }
+
+    public boolean takeable(int item){ return order.isTakeable(item);}
+
+
+
+    public void removeSelected(int item) { order.removeSelected(item);}
+
+    public boolean isEmpty() {return order.isEmpty();}
+
+    public void selectAll(int uID) {   order.selectAll(uID); }
 
 }

@@ -28,6 +28,7 @@ public class OrderView extends AppCompatActivity {
     ArrayAdapter<String> arrayAdapter;
     OrderController orderController;
     TableModel table;
+    int uID = 0;
 
 
     @Override
@@ -47,17 +48,18 @@ public class OrderView extends AppCompatActivity {
         table.setFood(fries);
         table.setFood(tacos);
 
+
         updateFoodNamesList(orderController);
         createListView();
         foodList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                if (orderController.has(position)) {
-                    orderController.removeSelected(position);
+                if (table.has(position, uID)) {
+                    table.removeSelected(position);
                     view.setBackgroundColor(0x125688);
                 }
-                else {
-                    orderController.addSelected(position);
+                else if (table.takeable(position)){
+                    table.addSelected(position, uID);
                     view.setBackgroundColor(Color.rgb(204,255,102));
                 }
             }
@@ -67,8 +69,15 @@ public class OrderView extends AppCompatActivity {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                FoodModel drink = new FoodModel("Beer", 2.75);
+                table.addSelected(0,1);
+                table.addSelected(1,1);
+                FoodModel drink = new FoodModel("Banana", 300.00);
                 table.setFood(drink);
+                for (int i = 0; i < orderController.getOrderSize(); i++){
+                    if (table.takeable(i) == false && table.has(i,uID) == false){
+                        foodList.getChildAt(i).setBackgroundColor(Color.rgb(255,153,128));
+                    }
+                }
                 updateFoodNamesList(orderController);
                 arrayAdapter.notifyDataSetChanged();
                 swipeContainer.setRefreshing(false);
@@ -94,13 +103,13 @@ public class OrderView extends AppCompatActivity {
 
     public void checkout(View view){
         Context context = this;
-        if (orderController.isEmpty()){
+        if (table.isEmpty()){
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     switch (which){
                         case DialogInterface.BUTTON_POSITIVE:
-                            orderController.selectAll();
+                            table.selectAll(uID);
                             pay();
                             break;
 
@@ -122,5 +131,6 @@ public class OrderView extends AppCompatActivity {
         Intent i = new Intent(getBaseContext(), PayView.class);
         startActivity(i);
     }
+
 
 }
