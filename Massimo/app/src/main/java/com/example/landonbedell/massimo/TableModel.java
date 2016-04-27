@@ -26,6 +26,4 @@ public class TableModel extends Observable {
         notifyObservers(order);
     }
 
-
-
 }
