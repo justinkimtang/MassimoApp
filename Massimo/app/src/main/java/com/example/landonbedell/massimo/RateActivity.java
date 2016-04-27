@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -35,6 +36,7 @@ public class RateActivity extends AppCompatActivity {
 
         listView.setOnItemClickListener(onItemClickListener());
         submitButtonListener();
+        exitButtonListener();
     }
 
     private AdapterView.OnItemClickListener onItemClickListener() {
@@ -57,7 +59,21 @@ public class RateActivity extends AppCompatActivity {
             }
         };
     }
+    public void exitButtonListener() {
+        ImageButton exitBtn = (ImageButton) findViewById(R.id.exit);
 
+        assert exitBtn != null;
+        exitBtn.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getBaseContext(), MainActivity.class);
+                startActivity(i);
+
+            }
+
+        });
+    }
     public void submitButtonListener() {
         Button submitBtn = (Button) findViewById(R.id.submitRating);
 

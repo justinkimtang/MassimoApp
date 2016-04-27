@@ -2,12 +2,14 @@ package com.example.landonbedell.massimo;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -31,6 +33,11 @@ public class RatingListViewAdapter extends ArrayAdapter<Rating> {
     }
 
     @Override
+    public void remove(Rating r) {
+        itemList.remove(r);
+    }
+
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
@@ -46,7 +53,7 @@ public class RatingListViewAdapter extends ArrayAdapter<Rating> {
         }
 
         holder.ratingBar.setOnRatingBarChangeListener(onRatingChangedListener(holder, position));
-
+        holder.submitOne.setOnClickListener(onClickListener(holder,position));
         holder.ratingBar.setTag(position);
         holder.ratingBar.setRating(getItem(position).ratingNum);
         holder.itemName.setText(getItem(position).item.getName());
@@ -64,13 +71,29 @@ public class RatingListViewAdapter extends ArrayAdapter<Rating> {
             }
         };
     }
+    private ImageButton.OnClickListener onClickListener(final ViewHolder holder, final int position){
+        return new ImageButton.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Rating r = getItem(position);
+                CustomerModel.getCurrentCustomer().submitPendingRatings(r);
+                remove(r);
+                notifyDataSetChanged();
+            }
+        };
+    }
+
+
+
 
     private static class ViewHolder {
         private RatingBar ratingBar;
         private TextView itemName;
+        private ImageButton submitOne;
         public ViewHolder(View view) {
             ratingBar = (RatingBar) view.findViewById(R.id.rate_img);
             itemName = (TextView) view.findViewById(R.id.text);
+            submitOne = (ImageButton) view.findViewById(R.id.submitOneRating);
         }
     }
 }

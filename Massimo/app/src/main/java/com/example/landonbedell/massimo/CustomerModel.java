@@ -27,14 +27,9 @@ public class CustomerModel {
         return currentCustomer;
     }
 
-    public void requestRecommendations(ArrayList<Rating> customerRatings)
+    public void requestRecommendations()
     {
-        Recommender recommender = new BasicRecommender();
-        for(Rating item: customerRatings)
-        {
-            recommendations = item.accept(recommender,recommendations);
-        }
-
+        recommendations = Rating.getRecommendation(customerRatings);
     }
 
     public void clearPendingRatings(){
@@ -45,9 +40,15 @@ public class CustomerModel {
         pendingRatings.remove(rating);
     }
 
+    public void submitPendingRatings(Rating rating)
+    {
+        customerRatings.add(rating);
+        pendingRatings.remove(rating);
+    }
+
     public void addPendingRatings(Ratable item)
     {
-        Rating rating = new Rating(item,0);
+        Rating rating = new Rating(name,item,0);
         pendingRatings.add(rating);
     }
 

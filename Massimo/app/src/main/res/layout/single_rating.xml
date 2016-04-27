@@ -26,10 +26,10 @@ android:orientation="horizontal">
     android:background="@android:color/background_light" />
 
     <ImageButton
+        android:id="@+id/submitOneRating"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.1"
-        android:id="@+id/submitOneRating"
         android:src="@android:drawable/ic_media_play"
         android:clickable="true"
         android:tint="@color/pressed_color"
