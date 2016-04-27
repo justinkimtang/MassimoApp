@@ -24,7 +24,7 @@ public class RateActivity extends AppCompatActivity {
     private ListView listView;
     private ArrayAdapter<Rating> adapter;
     private ArrayList<Rating> arrayList;
-    CustomerModel customer = CustomerModel.getCurrentCustomer();
+    private CustomerModel customer = CustomerModel.getCurrentCustomer();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

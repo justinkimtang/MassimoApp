@@ -17,12 +17,12 @@ import java.util.ArrayList;
  * Created by branden on 23/04/16.
  */
 public class PayView extends AppCompatActivity {
-    ArrayAdapter<String> arrayAdapter;
-    double total;
+    private ArrayAdapter<String> arrayAdapter;
+    private double total;
     private ListView tipList;
-    TextView totalDisplay;
-    OrderController orderController;
-    int uID = 0;
+    private TextView totalDisplay;
+    private OrderController orderController;
+    private int uID = 0;
 
 
 

@@ -25,10 +25,10 @@ public class OrderView extends AppCompatActivity {
     private ArrayList<String> foodNames = new ArrayList<String>();
     private SwipeRefreshLayout swipeContainer;
     private ListView foodList;
-    ArrayAdapter<String> arrayAdapter;
-    OrderController orderController;
-    TableModel table;
-    int uID = 0;
+    private ArrayAdapter<String> arrayAdapter;
+    private OrderController orderController;
+    private TableModel table;
+    private int uID = 0;
 
 
     @Override
